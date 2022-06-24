@@ -10,16 +10,47 @@ export default class PortfolioManager extends Component {
 
     this.state = {
       portfolioItems: [],
+      portfolioToEdit: {},
     };
 
     this.handleSuccessfulFormSubmission =
       this.handleSuccessfulFormSubmission.bind(this);
     this.handleFormSubmissionError = this.handleFormSubmissionError.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
+    this.handleEditClick = this.handleEditClick.bind(this);
+    this.clearPortfolioToEdit = this.clearPortfolioToEdit.bind(this);
+  }
+
+  clearPortfolioToEdit() {
+    this.setState({
+      portfolioToEdit: {},
+    });
+  }
+
+  handleEditClick(portfolioItem) {
+    this.setState({
+      portfolioToEdit: portfolioItem,
+    });
   }
 
   handleDeleteClick(portfolioItem) {
-    console.log("handleDeleteClick", portfolioItem);
+    axios
+      .delete(
+        `https://api.devcamp.space/portfolio/portfolio_items/${portfolioItem.id}`,
+        { withCredentials: true }
+      )
+      .then((response) => {
+        this.setState({
+          portfolioItems: this.state.portfolioItems.filter((item) => {
+            return item.id !== portfolioItem.id;
+          }),
+        });
+
+        return response.data;
+      })
+      .catch((error) => {
+        console.log("handleDeleteClick error", error);
+      });
   }
 
   handleSuccessfulFormSubmission(portfolioItem) {
@@ -61,6 +92,8 @@ export default class PortfolioManager extends Component {
           <PortfolioForm
             handleSuccessfulFormSubmission={this.handleSuccessfulFormSubmission}
             handleFormSubmissionError={this.handleFormSubmissionError}
+            clearPortfolioToEdit={this.clearPortfolioToEdit}
+            portfolioToEdit={this.state.portfolioToEdit}
           />
         </div>
 
@@ -68,6 +101,7 @@ export default class PortfolioManager extends Component {
           <PortfolioSidebarList
             handleDeleteClick={this.handleDeleteClick}
             data={this.state.portfolioItems}
+            handleEditClick={this.handleEditClick}
           />
         </div>
       </div>
