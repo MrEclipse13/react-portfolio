@@ -14,11 +14,11 @@ export default class BlogDetail extends Component {
   getBlogItem() {
     axios
       .get(
-        `https://cotyscott.devcamp.space/portfolio/portfolio_blogs/${this.state.currentId}`
+        `https:///cotyscott.devcamp.space/portfolio/portfolio_blogs/${this.state.currentId}`
       )
       .then((response) => {
         this.setState({
-          blogItem: response.data.portfolio_blog,
+          blogItem: response.data.portfolio_blog
         });
       })
       .catch((error) => {
@@ -35,10 +35,16 @@ export default class BlogDetail extends Component {
       this.state.blogItem;
 
     return (
-      <div>
-        <h1>{title}</h1>
-        <img src={featured_image_url} />
-        <div>{content}</div>
+      <div className="blog-container">
+        <div className="content-container">
+          <h1>{title}</h1>
+
+          <div className="featured-image-wrapper">
+            <img src={featured_image_url} />
+          </div>
+
+          <div className="content">{content}</div>
+        </div>
       </div>
     );
   }
