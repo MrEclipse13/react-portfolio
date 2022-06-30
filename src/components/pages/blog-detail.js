@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
+import ReactHtmlParser from "react-html-parser";
+
+import BlogFeaturedImage from "../blog/blog-featured-image";
 
 export default class BlogDetail extends Component {
   constructor(props) {
@@ -14,11 +17,11 @@ export default class BlogDetail extends Component {
   getBlogItem() {
     axios
       .get(
-        `https:///cotyscott.devcamp.space/portfolio/portfolio_blogs/${this.state.currentId}`
+        `https://cotyscott.devcamp.space/portfolio/portfolio_blogs/${this.state.currentId}`
       )
       .then((response) => {
         this.setState({
-          blogItem: response.data.portfolio_blog
+          blogItem: response.data.portfolio_blog,
         });
       })
       .catch((error) => {
@@ -39,11 +42,9 @@ export default class BlogDetail extends Component {
         <div className="content-container">
           <h1>{title}</h1>
 
-          <div className="featured-image-wrapper">
-            <img src={featured_image_url} />
-          </div>
+          <BlogFeaturedImage img={featured_image_url} />
 
-          <div className="content">{content}</div>
+          <div className="content">{ReactHtmlParser(content)}</div>
         </div>
       </div>
     );
