@@ -20,7 +20,7 @@ export default function () {
               <FontAwesomeIcon icon="phone" />
             </div>
 
-            <div className="text">555-555-5555</div>
+            <div className="text">(931) 933-0630</div>
           </div>
 
           <div className="bullet-point-group">
@@ -28,7 +28,7 @@ export default function () {
               <FontAwesomeIcon icon="envelope" />
             </div>
 
-            <div className="text">jordan@example.com</div>
+            <div className="text">scott.coty@gmail.com</div>
           </div>
 
           <div className="bullet-point-group">
@@ -36,7 +36,7 @@ export default function () {
               <FontAwesomeIcon icon="map-marked-alt" />
             </div>
 
-            <div className="text">Lehi, UT</div>
+            <div className="text">Clarksville, TN</div>
           </div>
         </div>
       </div>

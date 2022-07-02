@@ -26,7 +26,7 @@ export default class BlogForm extends Component {
     this.componentConfig = this.componentConfig.bind(this);
     this.djsConfig = this.djsConfig.bind(this);
     this.handleFeaturedImageDrop = this.handleFeaturedImageDrop.bind(this);
-    yhis.deleteImage = this.deleteImage.bind(this);
+    this.deleteImage = this.deleteImage.bind(this);
     this.featuredImageRef = React.createRef();
   }
 
