@@ -64,7 +64,11 @@
     "html-to-draftjs": "^1.5.0",
     "html-webpack-plugin": "^3.2.0",
     "moment": "^2.29.3",
+<<<<<<< HEAD
     "node": "^14.19.3",
+=======
+    "node": "^16.13.2",
+>>>>>>> 16885477719d9815331bb693dd3b7e1a0f0c9db1
     "node-sass": "^4.13.1",
     "postcss-loader": "^2.1.6",
     "react": "16.13.1",
