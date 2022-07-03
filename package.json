@@ -1,6 +1,10 @@
 {
   "name": "coty-scott-react-portfolio",
-  "version": "1.0.0",
+  "version": "1.2.1",
+  "engines": {
+    "node": "16.13.0",
+    "npm": "8.1.0"
+  },
   "description": "Personal portfolio app built in React.",
   "scripts": {
     "preinstall": "npm set audit false",
