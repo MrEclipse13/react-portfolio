@@ -1,7 +1,7 @@
 import React from "react";
 import profilePicture from "../../../static/assets/images/bio/headshot.jpg";
 
-export default function () {
+export default function() {
   return (
     <div className="content-page-wrapper">
       <div
@@ -9,7 +9,7 @@ export default function () {
         style={{
           background: "url(" + profilePicture + ") no-repeat",
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "center"
         }}
       />
       <div className="right-column">

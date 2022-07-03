@@ -6,7 +6,7 @@ export default class PortfolioDetail extends Component {
     super(props);
 
     this.state = {
-      portfolioItem: {},
+      portfolioItem: {}
     };
   }
 
@@ -17,15 +17,17 @@ export default class PortfolioDetail extends Component {
   getPortfolioItem() {
     axios
       .get(
-        `https://cotyscott.devcamp.space/portfolio/portfolio_items/${this.props.match.params.slug}`,
+        `https://cotyscott.devcamp.space/portfolio/portfolio_items/${
+          this.props.match.params.slug
+        }`,
         { withCredentials: true }
       )
-      .then((response) => {
+      .then(response => {
         this.setState({
-          portfolioItem: response.data.portfolio_item,
+          portfolioItem: response.data.portfolio_item
         });
       })
-      .catch((error) => {
+      .catch(error => {
         console.log("getportfolioitem error", error);
       });
   }
@@ -38,18 +40,18 @@ export default class PortfolioDetail extends Component {
       logo_url,
       name,
       thumb_image_url,
-      url,
+      url
     } = this.state.portfolioItem;
 
     const bannerStyles = {
       backgroundImage: "url(" + banner_image_url + ")",
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
-      backgroundPosition: "center center",
+      backgroundPosition: "center center"
     };
 
     const logoStyles = {
-      width: "200px",
+      width: "200px"
     };
 
     return (
@@ -58,13 +60,14 @@ export default class PortfolioDetail extends Component {
           <img src={logo_url} style={logoStyles} />
         </div>
 
-        <div className="portfolio-detail-description-wrapper" >
+        <div className="portfolio-detail-description-wrapper">
           <div className="description">{description}</div>
         </div>
 
-        
         <div className="bottom-content-wrapper">
-          <a href={url} className="site-link" target="_blank"> Visit {name}</a>
+          <a href={url} className="site-link" target="_blank">
+            Visit {name}
+          </a>
         </div>
       </div>
     );

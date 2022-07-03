@@ -12,27 +12,28 @@ export default class BlogDetail extends Component {
     this.state = {
       currentId: this.props.match.params.slug,
       blogItem: {},
-      editMode: false,
+      editMode: false
     };
 
     this.handleEditClick = this.handleEditClick.bind(this);
     this.handleFeaturedImageDelete = this.handleFeaturedImageDelete.bind(this);
-    this.handleUpdateFormSubmission =
-      this.handleUpdateFormSubmission.bind(this);
+    this.handleUpdateFormSubmission = this.handleUpdateFormSubmission.bind(
+      this
+    );
   }
 
   handleUpdateFormSubmission(blog) {
     this.setState({
-      blog_item: blog,
-      editMode: false,
+      blogItem: blog,
+      editMode: false
     });
   }
 
   handleFeaturedImageDelete() {
     this.setState({
       blogItem: {
-        featured_image_url: "",
-      },
+        featured_image_url: ""
+      }
     });
   }
 
@@ -45,14 +46,16 @@ export default class BlogDetail extends Component {
   getBlogItem() {
     axios
       .get(
-        `https://cotyscott.devcamp.space/portfolio/portfolio_blogs/${this.state.currentId}`
+        `https://cotyscott.devcamp.space/portfolio/portfolio_blogs/${
+          this.state.currentId
+        }`
       )
-      .then((response) => {
+      .then(response => {
         this.setState({
-          blogItem: response.data.portfolio_blog,
+          blogItem: response.data.portfolio_blog
         });
       })
-      .catch((error) => {
+      .catch(error => {
         console.log("getBlogItem error", error);
       });
   }
@@ -62,8 +65,12 @@ export default class BlogDetail extends Component {
   }
 
   render() {
-    const { title, content, featured_image_url, blog_status } =
-      this.state.blogItem;
+    const {
+      title,
+      content,
+      featured_image_url,
+      blog_status
+    } = this.state.blogItem;
 
     const contentManager = () => {
       if (this.state.editMode) {

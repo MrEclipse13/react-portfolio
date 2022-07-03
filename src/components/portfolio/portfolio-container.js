@@ -10,7 +10,7 @@ export default class PortfolioContainer extends Component {
     this.state = {
       pageTitle: "Welcome to my portfolio",
       isLoading: false,
-      data: [],
+      data: []
     };
 
     this.handleFilter = this.handleFilter.bind(this);
@@ -27,26 +27,26 @@ export default class PortfolioContainer extends Component {
   getPortfolioItems(filter = null) {
     axios
       .get("https://cotyscott.devcamp.space/portfolio/portfolio_items")
-      .then((response) => {
+      .then(response => {
         if (filter) {
           this.setState({
-            data: response.data.portfolio_items.filter((item) => {
+            data: response.data.portfolio_items.filter(item => {
               return item.category === filter;
-            }),
+            })
           });
         } else {
           this.setState({
-            data: response.data.portfolio_items,
+            data: response.data.portfolio_items
           });
         }
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
       });
   }
 
   portfolioItems() {
-    return this.state.data.map((item) => {
+    return this.state.data.map(item => {
       return <PortfolioItem key={item.id} item={item} />;
     });
   }
